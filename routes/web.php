@@ -1,7 +1,8 @@
 <?php
 
-// use App\Http\Controllers\CarController;
 // use App\Http\Controllers\ShowCarController;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -142,3 +143,22 @@ Route::view(uri: '/about', view: 'about')->name(name:'about');
 
 // Route::get('/car/invokable', CarController::class);
 // Route::get('/car', [CarController::class, 'index']);
+
+// Resource Controllers
+// Auto creates the routes for all the methods in the class. can see list with "php artisan route:list"
+
+// Route::resource(name:'/products', controller:ProductController::class)
+//     // ->except(['destroy']); // include an array of methods you want to exclude.
+//     ->only(['index', 'show']); // use only keyword to tell it specifically which to include.
+
+// Route::ApiResource(name:'/products', controller:ProductController::class);
+// edit and create do not use the API so they are not in the list. 
+
+// Route::resource(name:'/products', controller:ProductController::class);
+
+// Route::apiResource(name:'cars', controller:CarController::class);
+
+Route::apiResources([
+  'cars' => CarController::class,
+  'products' => ProductController::class,
+]);

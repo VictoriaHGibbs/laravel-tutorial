@@ -19,3 +19,22 @@ In terminal: php artisan make:controller ShowCarController --invokable
 ------ Resource Controllers ----- 1:22
 
 In Laravel 'Resource Controller' is a special type of controller that provides a convenient way to handle typical CRUD operations for a resource such as a database table.
+
+In terminal: php artisan make:controller ProductController --resource
+
+This will create a controller like usual but it has several more placeholder functions. 7 default methods
+
+// Route::resource(name:'/products', controller:ProductController::class);
+
+//Route::ApiResource(name:'/products', controller:ProductController::class);
+edit and create do not use the API so they are not in the list.
+
+Can use: php artisan make:controller CarController --api
+Will create a controller with only the 5 methods that use the API. 
+
+
+Can bulk list Routes with apiResources instead of ApiResource or resource.
+//Route::apiResources([
+  'cars' => CarController::class,
+  'products' => ProductController::class,
+]);
