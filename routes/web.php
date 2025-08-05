@@ -1,5 +1,7 @@
 <?php
 
+// use App\Http\Controllers\CarController;
+// use App\Http\Controllers\ShowCarController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -83,23 +85,23 @@ use Illuminate\Support\Facades\Route;
 
 // Route Groups 1:08:36
 
-Route::get('/', function () {
-  return view('welcome');
-});
+// Route::get('/', function () {
+//   return view('welcome');
+// });
 
-Route::view(uri: '/about', view: 'about')->name(name:'about');
+// Route::view(uri: '/about', view: 'about')->name(name:'about');
 
-Route::prefix('admin')->group(function () {
-  Route::get('/users', function(){
-    return '/admin/users';
-  });
-});
+// Route::prefix('admin')->group(function () {
+//   Route::get('/users', function(){
+//     return '/admin/users';
+//   });
+// });
 
-Route::name('admin.')->group(function () {
-  Route::get('/users', function(){
-    return '/users'; //But the route name is "admin.users"
-  })->name('users');
-});
+// Route::name('admin.')->group(function () {
+//   Route::get('/users', function(){
+//     return '/users'; //But the route name is "admin.users"
+//   })->name('users');
+// });
 
 
 // Fallback Routes , used when there would normally be a 404 error. Can set up and use another view that will be shown anytime there would be a 404. 
@@ -116,3 +118,27 @@ Route::fallback(function () {
 // Route Caching in terminal
 // php artisan route:cache  // Creates a cached version of the laravel routes. Will speed up and improve overall performance of the site. 
 // php artisan route:clear // Clears out any saved cache
+// ---------------------------------------------------------------------------------
+
+Route::get('/', function () {
+  return view('welcome');
+});
+
+Route::view(uri: '/about', view: 'about')->name(name:'about');
+
+// Route::get(uri: '/car', action: [CarController::class, 'index']);
+
+
+// Group Routes by Controller
+
+// Route::controller(CarController::class)->group(function(){
+//   Route::get(uri: '/car', action: 'index'); // This is the route above and we just removed the controller and left the method name. 
+//   Route::get(uri: '/my-cars', action: 'myCars');
+// });
+
+// Single Action Controllers
+
+// Route::get('/car', ShowCarController::class);
+
+// Route::get('/car/invokable', CarController::class);
+// Route::get('/car', [CarController::class, 'index']);

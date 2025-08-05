@@ -1,0 +1,21 @@
+Controller is a class which is associated to one or more routes and is responsible for handling requests of the routes. "Grouping of similar routes together". 
+
+Controllers are in app/Http/Controllers
+
+Can be done with artisan commands. When naming, it is best practice to end the names with Controller
+
+In terminal:  php artisan make:controller CarController 
+After it says the controller was successfully made and we can see the new file. 
+
+------ Group Routes by Controller -----
+
+web.php line 131
+
+------ Single Action Controllers ----- 1:19
+Single Action Controllers are controllers, that are associated to a single route only. --invokable keyword used to make the controller be a single action controller.
+
+In terminal: php artisan make:controller ShowCarController --invokable
+
+------ Resource Controllers ----- 1:22
+
+In Laravel 'Resource Controller' is a special type of controller that provides a convenient way to handle typical CRUD operations for a resource such as a database table.
